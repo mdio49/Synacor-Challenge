@@ -1,0 +1,25 @@
+{
+    "name": "syncode",
+    "displayName": "Syncode",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "syncode",
+            "aliases": ["Syncode", "syncode"],
+            "extensions": [".syn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "syncode",
+            "scopeName": "source.syn",
+            "path": "./syntaxes/syncode.tmLanguage.json"
+        }]
+    }
+}

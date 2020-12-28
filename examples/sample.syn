@@ -37,7 +37,7 @@ main:
         add $0 $0 '0'
         out $0                      # Prints this value to the terminal (assuming that it's a single digit).
         out '\n'
-
+    
     # Prints a string from memory.
     set $0 @hello
     rmem $1 @hello_N

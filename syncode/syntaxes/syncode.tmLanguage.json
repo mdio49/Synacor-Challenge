@@ -1,0 +1,119 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Syncode",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#characters"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#mem-types"
+		},
+		{
+			"include": "#references"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#registers"
+		}
+		
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.syncode",
+				"match": "\\b(halt|set|push|pop|eq|gt|jmp|jt|jf|add|mult|mod|and|or|not|rmem|wrem|call|ret|out|in|noop)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.syncode",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.syncode",
+					"match": "\\\\."
+				}
+			]
+		},
+		"characters": {
+			"name": "string.quoted.double.syncode",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.syncode",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.line",
+			"patterns": [
+				{
+					"name": "comment.line.syncode",
+					"match": "#.+"
+				}
+			]
+		},
+		"labels": {
+			"name": "entity.name.function",
+			"patterns": [
+				{
+					"name": "entity.name.function.syncode",
+					"match": "\\w+:"
+				}
+			]
+		},
+		"mem-types": {
+			"name": "entity.name.type",
+			"patterns": [
+				{
+					"name": "entity.name.type.syncode",
+					"match": "\\.\\w+"
+				}
+			]
+		},
+		"references": {
+			"name": "entity.name.function",
+			"patterns": [
+				{
+					"name": "entity.name.function.syncode",
+					"match": "\\@\\w+"
+				}
+			]
+		},
+		"registers": {
+			"name": "entity.name.type",
+			"patterns": [
+				{
+					"name": "variable.name.syncode",
+					"match": "\\$\\d+"
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"patterns": [
+				{
+					"name": "constant.numeric.syncode",
+					"match": "\\d+"
+				}
+			]
+		}
+	},
+	"scopeName": "source.syn"
+}
