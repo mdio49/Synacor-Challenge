@@ -42,31 +42,6 @@ ESCAPE_CHARACTERS = [
 class CompileError(Exception):
     pass
 
-def preprocess(program: list):
-    string_regex = r'\"((?:[^\"\\]|\\.)+)\"'
-    out_string_pattern = re.compile(r'out\s+' + string_regex)
-    word_string_pattern = re.compile(r'.word\s+' + string_regex)
-
-    output = []
-    for line in program:
-        if line.isspace():
-            continue
-        line = line.strip()
-        
-        out_string_match = out_string_pattern.match(line)
-        word_string_match = word_string_pattern.match(line)
-        if out_string_match:
-            text = out_string_match.group(1)
-            for c in re.findall(r'([^\"\\]|\\.)', text):
-                output.append("out {}".format('\'' + c + '\''))
-        elif word_string_match:
-            text = word_string_match.group(1)
-            output.append(".word" + ", ".join(re.findall(r'([^\"\\]|\\.)', text)))
-        else:
-            output.append(line)
-
-    return output
-
 def compile(program: list):
     # Regex patterns.
     END_TOKEN = r'(?:\s*|^)'

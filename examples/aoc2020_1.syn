@@ -1,0 +1,115 @@
+# A solution to the Advent of Code 2020 Day 1 Part 1.
+
+call @main
+halt
+
+numbers:
+    .word 1732, 1972, 1822, 1920, 1847, 1718, 1827, 1973, 1936, 1865, 1817, 1954, 1939, 1979, 1846, 1989, 1818, 398, 1786, 1900, 1949, 1161, 609, 1967, 1845, 1795, 1874, 1982, 2010, 1494, 1752, 1803, 1908, 1876, 1977, 1999, 1858, 1885, 1975, 1878, 1784, 1787, 1765, 1778, 1893, 1746, 1807, 1966, 1991, 1905, 1970, 1942, 1792, 1750, 713, 1871, 1860, 1931, 1976, 1771, 128, 390, 2006, 1801, 1946, 1914, 1833, 1515, 1958, 1737, 1887, 1962, 1895, 2004, 1747, 1841, 1793, 1948, 1790, 1808, 1957, 1770, 1960, 1952, 1932, 1782, 1762, 1898, 1919, 1909, 1929, 1964, 1848, 1959, 1381, 280, 1899, 1855, 1849, 1889, 1772, 1843, 1767, 1830, 1838, 1869, 1926, 1768, 1789, 1791, 1888, 1371, 2001, 1943, 1741, 1904, 1468, 1969, 1910, 649, 1953, 1916, 1852, 1996, 1842, 1950, 1850, 1998, 1963, 1780, 1883, 1955, 443, 1773, 1896, 1985, 1809, 2007, 1819, 1891, 1853, 1802, 1861, 1813, 1831, 1974, 1915, 1997, 2000, 1945, 1832, 1763, 1981, 1922, 1862, 1944, 1925, 1742, 1744, 1994, 1961, 1881, 1937, 1911, 1788, 1971, 1890, 1734, 1781, 1984, 1912, 1834, 1766, 1769, 1797, 195, 1965, 1934, 1894, 1928, 1759, 1812, 1758, 1988, 1821, 1776, 2009, 1749, 1857, 1785, 1824, 1796, 1930, 1777, 1886, 477, 1761, 1800, 1745, 1993
+numbers_len:
+    .word 200
+
+main:
+    set $0 @numbers
+    set $1 @numbers
+    rmem $2 @numbers_len
+    add $2 $2 @numbers
+
+outer_loop:
+    eq $3 $0 $2
+    jt $3 @outer_loop_end
+
+inner_loop:
+    eq $3 $1 $2
+    jt $3 @inner_loop_end
+
+    eq $3 $0 $1
+    jt $3 @inner_loop_continue
+    
+    rmem $3 $0
+    rmem $4 $1
+    add $5 $3 $4
+    eq $5 $5 2020
+    jt $5 @result
+
+inner_loop_continue:
+    add $1 $1 1
+    jmp @inner_loop
+
+inner_loop_end:
+
+    add $0 $0 1
+    set $1 @numbers
+    jmp @outer_loop
+
+outer_loop_end:
+    out "No result!"
+    ret
+
+result:
+    set $0 $3
+    call @itoa
+    out " + "
+    set $0 $4
+    call @itoa
+    out " = 2020"
+    ret
+
+# Prints the string representation of the number stored in $0.
+itoa:
+    push $0
+    push $1
+    push 0
+
+itoa_loop:
+    mod $1 $0 10
+    add $1 $1 '0'
+    push $1
+    set $1 10
+    call @div
+    jf $0 @itoa_print
+    jmp @itoa_loop
+
+itoa_print:
+    pop $0
+    jf $0 @itoa_end
+    out $0
+    jmp @itoa_print
+
+itoa_end:
+    pop $1
+    pop $0
+    ret
+
+# Computes $0 / $1 and stores it in $0
+div:
+    push $1
+    push $2
+    push $3
+    push $4
+    eq $3 $1 0
+    jt $3 @div_by_zero
+    set $2 0
+
+div_loop:
+    gt $3 $0 $1
+    eq $4 $0 $1
+    or $3 $3 $4
+    jf $3 @div_end
+
+    add $2 $2 1
+    set $3 $1
+    mult $3 $3 -1
+    add $0 $0 $3
+    jmp @div_loop
+
+div_by_zero:
+    out "Error: Division by zero!\n"
+    halt
+
+div_end:
+    set $0 $2
+    pop $4
+    pop $3
+    pop $2
+    pop $1
+    ret
