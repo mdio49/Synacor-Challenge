@@ -1,0 +1,67 @@
+call @main 
+halt
+
+# Memory.
+number:
+    .word 9
+hello:
+    .word "Hello world!"
+hello_N:
+    .word 12
+terminated_hello:
+    .word "Hello, I am null terminated!\0"
+
+# Main entry point to program.
+main:
+    # Registry operations.
+    set $0 1                        # Set register 0 to 1.
+    set $1 5                        # Set register 1 to 5.
+    set $2 -3                       # Set register 2 to -3.
+    add $1 $1 $2                    # Set register 1 to [the value of register 1] + [the value of register 2].
+    add $0 $0 $1                    # Set register 0 to [the value of register 0] + [the value of register 1].
+    add $0 $0 4                     # Add 4 to the value of register 0.
+    add $0 $0 -2                    # Subtract 2 from the value of register 0.
+    add $0 $0 '0'                   # Set register 0 to the ASCII character of the digit in register 0.
+    
+    # Output.
+    out "$0 = "                     # Strings may be used in the 'out' instruction (expands to multiple instructions at compile time).
+    out $0                          # Writes the value of register 0 to the terminal.
+    out '\n'
+
+    jmp @test                       # Jump to the label 'test'.
+    out "Jump failed!"
+
+    test:                           # Defines a new label.
+        out "number = "
+        rmem $0 @number             # Reads the memory at the address of label 'number' and stores it in register 0.
+        add $0 $0 '0'
+        out $0                      # Prints this value to the terminal (assuming that it's a single digit).
+        out '\n'
+
+    # Prints a string from memory.
+    set $0 @hello
+    rmem $1 @hello_N
+    hello_loop:
+        jf $1 @hello_loop_end
+        rmem $2 $0                  # Get the current character at the pointer.
+        out $2                      # Output this character.
+        add $0 $0 1                 # Increment the pointer.
+        add $1 $1 -1
+        jmp @hello_loop
+
+    hello_loop_end:
+        out '\n'
+    
+    # Prints a null-terminated string from memory.
+    set $0 @terminated_hello
+    hello_loop2:
+        rmem $1 $0                  # Get the current character at the pointer.
+        jf $1 @hello_loop2_end      # Break the loop if its a null terminator.
+        out $1                      # Output this character.
+        add $0 $0 1                 # Increment the pointer.
+        jmp @hello_loop2
+
+    hello_loop2_end:
+        out '\n'
+
+    ret

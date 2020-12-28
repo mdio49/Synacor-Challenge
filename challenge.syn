@@ -1,0 +1,1926 @@
+noop
+noop
+out      "Welcome to the Synacor Challenge!\n"
+out      "Please record your progress by putting codes like\n"
+out      "this one into the challenge website: oTuNIDqFgbWR\n"
+out      "\n"
+out      "Executing self-test...\n"
+out      "\n"
+jmp      347
+out      "jmp fails\n"
+halt
+noop
+noop
+noop
+noop
+noop
+noop
+noop
+noop
+noop
+jmp      358
+jmp      368
+jmp      397
+jmp      484
+jmp      424
+jmp      453
+noop
+noop
+noop
+noop
+out      "jmp lands -2\n"
+halt
+noop
+noop
+out      "jmp lands -1\n"
+halt
+noop
+noop
+out      "jmp lands +1\n"
+halt
+noop
+noop
+noop
+noop
+out      "jmp lands +2\n"
+halt
+jt       0       1074
+jf       1       1074
+jt       1       495
+jmp      1074
+jf       0       500
+jmp      1074
+jt       $0      1093
+jt       $1      1093
+jt       $2      1093
+jt       $3      1093
+jt       $4      1093
+jt       $5      1093
+jt       $6      1093
+jt       $7      1093
+set      $0      1
+jf       $0      1118
+set      $0      0
+jt       $0      1118
+add      $0      1       1
+jt       $0      564
+out      "no add op\n"
+halt
+eq       $1      $0      2
+jt       $1      590
+out      "no eq op\n"
+halt
+push     $0
+push     $1
+pop      $0
+pop      $1
+eq       $2      $1      2
+jf       $2      1158
+eq       $2      $0      1
+jf       $2      1158
+gt       $2      $1      $0
+jf       $2      1139
+gt       $2      $0      $1
+jt       $2      1139
+gt       $2      42      42
+jt       $2      1139
+and      $0      28912   19626
+eq       $1      $0      16544
+jf       $1      1177
+or       $1      28912   19626
+eq       $0      $1      31994
+jt       $0      684
+out      "no bitwise or\n"
+halt
+not      $0      0
+eq       $1      $0      32767
+jf       $1      1208
+not      $0      21845
+eq       $1      $0      10922
+jf       $1      1208
+call     1285
+jmp      1289
+pop      $0
+eq       $1      $0      708
+jt       $1      1289
+eq       $1      $0      706
+jf       $1      1289
+set      $0      1287
+call     $0
+jmp      1289
+pop      $0
+eq       $1      $0      731
+jt       $1      1289
+eq       $1      $0      729
+jf       $1      1289
+add      $0      32767   32767
+eq       $1      $0      32766
+jf       $1      1312
+eq       $1      32766   $0
+jf       $1      1312
+add      $0      16384   16384
+jt       $0      1312
+add      $0      16384   16384
+jt       $0      1312
+mult     $0      6       9
+eq       $1      $0      42
+jt       $1      1381
+eq       $1      $0      54
+jf       $1      1414
+mult     $0      12345   32123
+eq       $1      $0      99
+jf       $1      1312
+mod      $0      6       3
+eq       $1      $0      0
+jf       $1      1437
+mod      $0      70      6
+eq       $1      $0      4
+jf       $1      1437
+mult     $0      32766   15
+eq       $1      $0      32738
+jf       $1      1312
+jmp      845
+rmem     $0      843
+eq       $1      $0      20000
+jf       $1      1239
+add      $2      843     1
+rmem     $0      $2
+eq       $1      $0      10000
+jf       $1      1239
+set      $0      843
+wmem     $0      30000
+rmem     $2      $0
+eq       $1      $2      30000
+jf       $1      1262
+call     1723
+rmem     $0      6068
+eq       $1      $0      11
+jf       $1      1239
+add      $2      6068    1
+rmem     $0      $2
+eq       $1      $0      116
+jf       $1      1239
+wmem     $2      84
+rmem     $0      $2
+eq       $1      $0      116
+jt       $1      1262
+eq       $1      $0      84
+jf       $1      1262
+wmem     937     21
+wmem     938     7
+jmp      941
+out      "ϒwmem opwrite fail\n"
+halt
+add      $1      10      6080
+add      $1      $1      1
+rmem     $2      6116
+add      $2      $2      6116
+set      $0      6116
+add      $0      $0      1
+gt       $3      $0      $2
+jt       $3      1023
+rmem     $4      $0
+wmem     $1      $4
+add      $0      $0      1
+add      $1      $1      1
+jmp      1000
+rmem     $0      6080
+rmem     $1      6099
+add      $0      $0      $1
+add      $0      $0      1
+wmem     6080    $0
+wmem     6099    44
+set      $0      6080
+call     1518
+push     $0
+push     $1
+push     $2
+set      $0      26851
+set      $1      1531
+add      $2      12005   15367
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      2734
+out      "no jt/jf\n"
+halt
+out      "nonzero reg\n"
+halt
+out      "no set op\n"
+halt
+out      "no gt op\n"
+halt
+out      "no stack\n"
+halt
+out      "no bitwise and\n"
+halt
+out      "no bitwise not\n"
+halt
+out      "no rmem op\n"
+halt
+out      "no wmem op\n"
+halt
+jmp      708
+jmp      731
+out      "no call op\n"
+halt
+out      "no modulo math during add or mult\n"
+halt
+out      "not hitchhiking\n"
+halt
+out      "no mult op\n"
+halt
+out      "no mod op\n"
+halt
+push     $0
+push     $3
+push     $4
+push     $5
+push     $6
+set      $6      $0
+set      $5      $1
+rmem     $4      $0
+set      $1      0
+add      $3      1       $1
+gt       $0      $3      $4
+jt       $0      1507
+add      $3      $3      $6
+rmem     $0      $3
+call     $5
+add      $1      $1      1
+jt       $1      1480
+pop      $6
+pop      $5
+pop      $4
+pop      $3
+pop      $0
+ret
+push     $1
+set      $1      1528
+call     1458
+pop      $1
+ret
+out      $0
+ret
+push     $1
+set      $1      $2
+call     2125
+out      $0
+pop      $1
+ret
+push     $1
+push     $3
+rmem     $3      $0
+jf       $3      1563
+call     1458
+jt       $1      1563
+set      $0      $2
+jmp      1566
+set      $0      32767
+pop      $3
+pop      $1
+ret
+push     $1
+push     $2
+set      $2      $1
+set      $1      1605
+call     1543
+pop      $2
+pop      $1
+ret
+push     $1
+push     $2
+set      $2      $1
+set      $1      1648
+call     1543
+pop      $2
+pop      $1
+ret
+eq       $0      $0      $2
+jf       $0      1618
+set      $2      $1
+set      $1      32767
+ret
+push     $3
+add      $3      $2      1
+add      $3      $3      $1
+rmem     $3      $3
+eq       $3      $0      $3
+jt       $3      1645
+set      $2      $1
+set      $1      32767
+pop      $3
+ret
+push     $1
+set      $1      $2
+call     1667
+pop      $1
+jf       $0      1666
+set      $2      $1
+set      $1      32767
+ret
+push     $1
+push     $2
+push     $3
+push     $4
+rmem     $3      $0
+rmem     $4      $1
+eq       $2      $3      $4
+jf       $2      1711
+or       $2      $3      $4
+jf       $2      1706
+set      $2      $1
+set      $1      1619
+call     1458
+jf       $1      1711
+set      $0      1
+jmp      1714
+set      $0      0
+pop      $4
+pop      $3
+pop      $2
+pop      $1
+ret
+push     $0
+push     $1
+set      $1      6068
+rmem     $0      $1
+push     $1
+mult     $1      $1      $1
+call     2125
+set      $1      16724
+call     2125
+pop      $1
+wmem     $1      $0
+add      $1      $1      1
+eq       $0      30050   $1
+jf       $0      1730
+pop      $1
+pop      $0
+ret
+push     $0
+push     $2
+push     $3
+push     $4
+push     $5
+add      $2      $1      $0
+set      $0      $1
+set      $5      0
+add      $0      $0      1
+gt       $3      $0      $2
+jt       $3      1816
+in       $4
+eq       $3      $4      10
+jt       $3      1816
+wmem     $0      $4
+add      $5      $5      1
+jmp      1787
+wmem     $1      $5
+eq       $3      $4      10
+jt       $3      1830
+in       $4
+jmp      1819
+pop      $5
+pop      $4
+pop      $3
+pop      $2
+pop      $0
+ret
+push     $3
+push     $4
+push     $5
+push     $6
+set      $6      1
+add      $4      $3      $6
+rmem     $4      $4
+add      $5      6125    $6
+wmem     $5      $4
+add      $6      $6      1
+rmem     $5      6125
+gt       $4      $6      $5
+jf       $4      1852
+set      $3      0
+set      $4      0
+rmem     $5      6125
+mod      $5      $4      $5
+add      $5      $5      6125
+add      $5      $5      1
+rmem     $6      $5
+mult     $6      $6      5249
+add      $6      $6      12345
+wmem     $5      $6
+push     $0
+push     $1
+set      $1      $6
+call     2125
+set      $6      $0
+pop      $1
+pop      $0
+rmem     $5      $1
+mod      $6      $6      $5
+add      $6      $6      1
+gt       $5      $6      $2
+jt       $5      1952
+set      $3      1
+add      $6      $6      $1
+rmem     $6      $6
+add      $4      $4      1
+add      $5      $4      6129
+wmem     $5      $6
+rmem     $5      6129
+eq       $5      $4      $5
+jf       $5      1886
+jf       $3      1880
+push     $0
+set      $0      6129
+call     1518
+pop      $0
+pop      $6
+pop      $5
+pop      $4
+pop      $3
+ret
+push     $0
+push     $1
+push     $2
+push     $3
+push     $4
+push     $5
+set      $2      1
+set      $5      0
+jf       $0      2092
+eq       $4      $2      10000
+set      $3      $0
+jt       $4      2040
+mult     $1      $2      10
+mod      $3      $0      $1
+set      $4      0
+mult     $2      $2      32767
+jf       $3      2060
+add      $4      $4      1
+add      $3      $3      $2
+jmp      2047
+mult     $2      $2      32767
+mult     $3      $4      $2
+mult     $3      $3      32767
+add      $0      $0      $3
+add      $4      $4      48
+mult     $2      $2      10
+add      $5      $5      1
+push     $4
+jmp      2019
+jt       $5      2099
+out      '0'
+jmp      2112
+jf       $5      2112
+pop      $0
+out      $0
+add      $5      $5      32767
+jmp      2099
+pop      $5
+pop      $4
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $1
+push     $2
+and      $2      $0      $1
+not      $2      $2
+or       $0      $0      $1
+and      $0      $0      $2
+pop      $2
+pop      $1
+ret
+add      $0      $0      $1
+gt       $1      $1      $0
+ret
+push     $2
+gt       $2      $1      $0
+mult     $1      $1      32767
+add      $0      $0      $1
+set      $1      $2
+pop      $2
+ret
+jf       $0      2241
+jf       $1      2241
+push     $2
+push     $3
+gt       $2      $1      $0
+jt       $2      2204
+set      $2      $0
+set      $0      $1
+set      $1      $2
+set      $2      $0
+set      $0      0
+add      $0      $0      $1
+gt       $3      $1      $0
+jt       $3      2233
+add      $2      $2      32767
+jt       $2      2210
+set      $1      0
+jmp      2236
+set      $1      1
+pop      $3
+pop      $2
+ret
+set      $0      0
+set      $1      0
+ret
+push     $1
+push     $2
+jf       $1      2276
+add      $1      $1      32767
+and      $2      $0      16384
+mult     $0      $0      2
+jf       $2      2252
+or       $0      $0      1
+jmp      2252
+pop      $2
+pop      $1
+ret
+push     $1
+gt       $1      $0      14
+jt       $1      2309
+set      $1      $0
+set      $0      1
+jf       $1      2312
+add      $1      $1      32767
+mult     $0      $0      2
+jmp      2296
+set      $0      32767
+pop      $1
+ret
+jmp      2734
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+halt
+push     $0
+push     $1
+push     $2
+push     $3
+rmem     $1      2732
+rmem     $0      2733
+eq       $0      $0      $1
+jt       $0      2770
+rmem     $0      2732
+add      $0      $0      4
+rmem     $0      $0
+jf       $0      2770
+call     $0
+rmem     $1      2732
+rmem     $0      2733
+eq       $0      $0      $1
+jt       $0      2791
+set      $0      25974
+wmem     $0      0
+call     2964
+wmem     2733    $1
+push     $0
+push     $1
+push     $2
+set      $0      27414
+set      $1      1531
+add      $2      18243   44
+call     1458
+pop      $2
+pop      $1
+pop      $0
+set      $0      32
+set      $1      25974
+call     1767
+out      "\n"
+out      "\n"
+set      $0      25974
+set      $1      32
+call     1571
+eq       $1      $0      32767
+jf       $1      2848
+rmem     $0      25974
+set      $2      $0
+rmem     $1      25974
+push     $1
+wmem     25974   $2
+set      $0      27398
+set      $1      25974
+call     1588
+pop      $1
+wmem     25974   $1
+eq       $1      $0      32767
+jf       $1      2885
+set      $0      0
+set      $2      0
+add      $1      27406   1
+add      $1      $1      $0
+rmem     $1      $1
+rmem     $3      25974
+eq       $3      $3      $2
+jt       $3      2944
+mult     $0      $2      32767
+rmem     $3      25974
+add      $3      $0      $3
+jf       $2      2924
+add      $3      $3      32767
+mod      $3      $3      32
+add      $0      25974   $2
+jf       $2      2939
+add      $0      $0      1
+wmem     $0      $3
+jmp      2950
+set      $0      25974
+wmem     $0      0
+call     $1
+jt       $1      2742
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+rmem     $1      $0
+jf       $1      3032
+call     5921
+jf       $0      3006
+push     $0
+call     5990
+set      $1      $0
+pop      $0
+jf       $1      3006
+add      $1      $0      1
+rmem     $0      $1
+call     1518
+out      "\n"
+jmp      3238
+push     $0
+push     $1
+push     $2
+set      $0      27432
+set      $1      1531
+add      $2      11736   12559
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      3238
+rmem     $0      2732
+push     $0
+out      "== "
+add      $0      $0      0
+rmem     $0      $0
+call     1518
+out      " ==\n"
+pop      $0
+push     $0
+add      $0      $0      1
+rmem     $0      $0
+rmem     $1      $0
+eq       $1      $1      2
+jf       $1      3104
+push     $0
+set      $0      2680
+call     5990
+set      $1      $0
+pop      $0
+add      $0      $0      1
+add      $0      $0      $1
+rmem     $0      $0
+call     1518
+out      "\n"
+pop      $0
+push     $0
+call     5823
+jf       $0      3146
+push     $0
+push     $1
+push     $2
+set      $0      27455
+set      $1      1531
+add      $2      1621    10791
+call     1458
+pop      $2
+pop      $1
+pop      $0
+rmem     $2      2732
+call     5876
+pop      $0
+push     $0
+add      $0      $0      2
+rmem     $0      $0
+rmem     $0      $0
+eq       $2      $0      1
+out      "\n"
+out      "There "
+jt       $2      3189
+out      "are"
+jmp      3193
+out      "is "
+call     2001
+out      " exit"
+eq       $2      $0      1
+jt       $2      3216
+out      "s:\n"
+pop      $0
+push     $0
+add      $0      $0      2
+rmem     $0      $0
+set      $1      5814
+call     1458
+pop      $0
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+set      $1      $0
+rmem     $0      2732
+add      $0      $0      2
+rmem     $0      $0
+call     1588
+eq       $2      $0      32767
+jt       $2      3302
+rmem     $2      2732
+add      $2      $2      3
+rmem     $2      $2
+add      $2      $2      1
+add      $2      $2      $0
+rmem     $2      $2
+wmem     2732    $2
+wmem     2733    0
+jmp      3326
+push     $0
+push     $1
+push     $2
+set      $0      27482
+set      $1      1531
+add      $2      12206   19913
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $0
+push     $1
+push     $2
+set      $0      27532
+set      $1      1531
+add      $2      14841   1922
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $0
+ret
+push     $0
+push     $2
+push     $0
+push     $1
+push     $2
+set      $0      28037
+set      $1      1531
+add      $2      1651    14464
+call     1458
+pop      $2
+pop      $1
+pop      $0
+set      $2      0
+call     5876
+pop      $2
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+call     5921
+jf       $0      3457
+add      $1      $0      2
+rmem     $0      $1
+rmem     $2      2732
+eq       $2      $0      $2
+jf       $2      3457
+wmem     $1      0
+push     $0
+push     $1
+push     $2
+set      $0      28054
+set      $1      1531
+add      $2      11956   4786
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      3481
+push     $0
+push     $1
+push     $2
+set      $0      28062
+set      $1      1531
+add      $2      11778   11000
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+call     5921
+jf       $0      3539
+add      $1      $0      2
+rmem     $0      $1
+jt       $0      3539
+rmem     $0      2732
+wmem     $1      $0
+push     $0
+push     $1
+push     $2
+set      $0      28090
+set      $1      1531
+add      $2      193     812
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      3563
+push     $0
+push     $1
+push     $2
+set      $0      28100
+set      $1      1531
+add      $2      3192    3569
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+call     5921
+jf       $0      3601
+add      $1      $0      2
+rmem     $1      $1
+jt       $1      3601
+add      $1      $0      3
+rmem     $1      $1
+jf       $1      3627
+call     $1
+jmp      3651
+push     $0
+push     $1
+push     $2
+set      $0      28135
+set      $1      1531
+add      $2      1122    2447
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      3651
+push     $0
+push     $1
+push     $2
+set      $0      28170
+set      $1      1531
+add      $2      708     561
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+set      $0      2680
+call     5990
+jt       $0      3694
+add      $0      2676    2
+wmem     $0      32767
+add      $0      2680    2
+wmem     $0      32767
+add      $0      2672    2
+wmem     $0      32767
+wmem     2732    2648
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+set      $0      28204
+set      $1      1531
+add      $2      5407    77
+call     1458
+pop      $2
+pop      $1
+pop      $0
+halt
+halt
+push     $1
+rmem     $1      3726
+or       $1      $1      $0
+wmem     3726    $1
+pop      $1
+ret
+wmem     3726    0
+ret
+push     $0
+set      $0      1
+call     3727
+pop      $0
+ret
+push     $0
+set      $0      2
+call     3727
+pop      $0
+ret
+push     $0
+set      $0      4
+call     3727
+pop      $0
+ret
+push     $0
+set      $0      8
+call     3727
+pop      $0
+ret
+push     $0
+set      $0      16
+call     3727
+pop      $0
+ret
+push     $0
+set      $0      32
+call     3727
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+push     $3
+set      $0      64
+call     3727
+push     $0
+push     $1
+push     $2
+set      $0      28236
+set      $1      1531
+add      $2      575     3364
+call     1458
+pop      $2
+pop      $1
+pop      $0
+rmem     $0      3726
+set      $1      25866
+set      $2      32767
+set      $3      28299
+call     1841
+push     $0
+push     $1
+push     $2
+set      $0      28303
+set      $1      1531
+add      $2      1577    80
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2732    2417
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+rmem     $0      2462
+rmem     $1      27101
+eq       $0      $0      $1
+jt       $0      3940
+push     $0
+push     $1
+push     $2
+set      $0      28347
+set      $1      1531
+add      $2      530     4712
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2732    2457
+wmem     2733    2457
+pop      $1
+pop      $0
+ret
+halt
+halt
+halt
+halt
+halt
+halt
+push     $0
+push     $1
+set      $0      2
+set      $1      0
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      8
+set      $1      1
+call     4279
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      1
+set      $1      2
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      1
+set      $1      3
+call     4279
+call     4533
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      4
+set      $1      4
+call     4279
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2
+set      $1      5
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      11
+set      $1      6
+call     4279
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2
+set      $1      7
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      0
+set      $1      8
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      4
+set      $1      9
+call     4279
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      1
+set      $1      10
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      18
+set      $1      11
+call     4279
+pop      $1
+pop      $0
+ret
+call     4611
+ret
+push     $0
+push     $1
+set      $0      1
+set      $1      12
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      9
+set      $1      13
+call     4279
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2
+set      $1      14
+call     4218
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+add      $2      2716    2
+rmem     $2      $2
+jt       $2      4272
+call     4405
+wmem     3951    $0
+add      $1      $0      3945
+rmem     $1      $1
+set      $0      26024
+call     1518
+set      $0      $1
+call     1518
+set      $0      26088
+call     1518
+set      $0      $1
+call     1518
+out      ".\n"
+out      "\n"
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+add      $2      2716    2
+rmem     $2      $2
+jt       $2      4398
+call     4405
+push     $0
+rmem     $0      3951
+add      $1      $0      3945
+rmem     $1      $1
+set      $0      26122
+call     1518
+set      $0      $1
+call     1518
+set      $0      26170
+call     1518
+pop      $0
+set      $1      $0
+rmem     $0      3952
+rmem     $2      3951
+add      $2      $2      3948
+rmem     $2      $2
+call     $2
+jt       $1      4391
+rmem     $1      3952
+wmem     3952    $0
+gt       $2      $0      $1
+jf       $2      4369
+push     $0
+set      $0      26235
+call     1518
+pop      $0
+gt       $2      $1      $0
+jf       $2      4385
+push     $0
+set      $0      26267
+call     1518
+pop      $0
+out      "\n"
+out      "\n"
+jmp      4398
+call     4660
+set      $0      26299
+call     1518
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+push     $3
+push     $4
+push     $5
+rmem     $5      3953
+gt       $3      $5      29999
+jt       $3      4434
+add      $5      $5      1
+wmem     3953    $5
+set      $3      $0
+set      $4      $1
+add      $0      $5      2
+call     2281
+rmem     $1      3954
+or       $0      $1      $0
+set      $1      $4
+call     2248
+wmem     3954    $0
+set      $0      3955
+add      $1      $5      2
+set      $2      $4
+call     4515
+set      $0      3956
+mult     $1      $5      $5
+mult     $2      $4      $4
+call     4515
+set      $0      3957
+set      $1      13
+mult     $2      $3      9
+mult     $2      $2      $2
+call     4515
+pop      $5
+pop      $4
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+rmem     $0      $0
+call     2248
+set      $1      $2
+call     2125
+pop      $1
+wmem     $1      $0
+ret
+push     $0
+add      $0      2716    2
+rmem     $0      $0
+jt       $0      4608
+set      $0      26321
+call     1518
+rmem     $0      3952
+eq       $0      $0      30
+jt       $0      4574
+set      $0      26354
+call     1518
+set      $0      26398
+call     1518
+call     4660
+jmp      4608
+set      $0      26440
+call     1518
+rmem     $0      3954
+add      $0      $0      1
+jt       $0      4596
+set      $0      26484
+call     1518
+jmp      4565
+set      $0      26584
+call     1518
+add      $0      2716    2
+wmem     $0      32767
+pop      $0
+ret
+push     $0
+add      $0      2716    2
+rmem     $0      $0
+jt       $0      4657
+set      $0      26717
+call     1518
+rmem     $0      2732
+eq       $0      $0      2623
+jt       $0      4645
+set      $0      26725
+call     1518
+jmp      4650
+set      $0      26731
+call     1518
+set      $0      26737
+call     1518
+call     4660
+pop      $0
+ret
+push     $0
+wmem     3952    22
+wmem     3953    0
+wmem     3954    0
+wmem     3955    0
+wmem     3956    0
+wmem     3957    0
+add      $0      2716    2
+wmem     $0      2623
+pop      $0
+ret
+push     $0
+add      $0      2716    2
+rmem     $0      $0
+eq       $0      $0      32767
+jt       $0      4717
+set      $0      26824
+call     1518
+wmem     2732    2578
+wmem     2733    2578
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+push     $3
+push     $0
+push     $1
+push     $2
+set      $0      28369
+set      $1      1531
+add      $2      1421    612
+call     1458
+pop      $2
+pop      $1
+pop      $0
+set      $0      4242
+set      $1      25866
+set      $2      32767
+set      $3      28397
+call     1841
+push     $0
+push     $1
+push     $2
+set      $0      28401
+set      $1      1531
+add      $2      5174    831
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+add      $0      2672    2
+rmem     $0      $0
+jt       $0      4858
+add      $0      2684    2
+wmem     $0      32767
+add      $0      2672    2
+wmem     $0      32767
+add      $0      2676    2
+wmem     $0      0
+push     $0
+push     $1
+push     $2
+set      $0      28453
+set      $1      1531
+add      $2      1530    1269
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      4882
+push     $0
+push     $1
+push     $2
+set      $0      28510
+set      $1      1531
+add      $2      28319   1375
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $0
+ret
+push     $0
+add      $0      2676    2
+wmem     $0      32767
+add      $0      2680    2
+wmem     $0      0
+push     $0
+push     $1
+push     $2
+set      $0      28569
+set      $1      1531
+add      $2      1347    12476
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2733    0
+pop      $0
+ret
+push     $0
+add      $0      2676    2
+wmem     $0      0
+add      $0      2680    2
+wmem     $0      32767
+push     $0
+push     $1
+push     $2
+set      $0      28595
+set      $1      1531
+add      $2      77      291
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2733    0
+pop      $0
+ret
+push     $2
+push     $3
+rmem     $2      2732
+eq       $2      $2      2457
+jt       $2      5017
+push     $0
+push     $1
+push     $2
+set      $0      28621
+set      $1      1531
+add      $2      24726   731
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      5336
+add      $2      $0      2
+wmem     $2      32767
+rmem     $2      2462
+add      $2      $2      27095
+add      $2      $2      1
+rmem     $2      $2
+add      $3      2457    1
+rmem     $3      $3
+add      $3      $3      $2
+add      $2      $1      48
+wmem     $3      $2
+rmem     $2      2462
+add      $2      $2      27101
+add      $2      $2      1
+wmem     $2      $1
+push     $0
+push     $0
+push     $1
+push     $2
+set      $0      28664
+set      $1      1531
+add      $2      21775   5082
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $0
+push     $0
+add      $2      $0      0
+rmem     $0      $2
+call     1518
+pop      $0
+push     $0
+push     $0
+push     $1
+push     $2
+set      $0      28679
+set      $1      1531
+add      $2      20885   10196
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $0
+rmem     $2      2462
+add      $2      $2      1
+wmem     2462    $2
+rmem     $3      27101
+eq       $3      $2      $3
+jf       $3      5336
+set      $0      0
+add      $1      27101   1
+rmem     $1      $1
+add      $0      $0      $1
+add      $1      27101   2
+rmem     $1      $1
+add      $2      27101   3
+rmem     $2      $2
+mult     $2      $2      $2
+mult     $1      $1      $2
+add      $0      $0      $1
+add      $1      27101   4
+rmem     $1      $1
+mult     $2      $1      $1
+mult     $2      $2      $1
+add      $0      $0      $2
+add      $1      27101   5
+rmem     $1      $1
+mult     $1      $1      32767
+add      $0      $0      $1
+eq       $1      $0      399
+jt       $1      5312
+add      $2      2688    2
+wmem     $2      2457
+add      $2      2692    2
+wmem     $2      2457
+add      $2      2696    2
+wmem     $2      2457
+add      $2      2700    2
+wmem     $2      2457
+add      $2      2704    2
+wmem     $2      2457
+wmem     2462    0
+set      $0      27095
+set      $1      5341
+call     1458
+push     $0
+push     $1
+push     $2
+set      $0      28710
+set      $1      1531
+add      $2      2841    5711
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      5336
+push     $0
+push     $1
+push     $2
+set      $0      28777
+set      $1      1531
+add      $2      2185    24683
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $3
+pop      $2
+ret
+push     $2
+add      $2      2457    1
+rmem     $2      $2
+add      $2      $2      $0
+wmem     $2      95
+pop      $2
+ret
+push     $0
+push     $1
+set      $0      2688
+set      $1      2
+call     4977
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2692
+set      $1      3
+call     4977
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2696
+set      $1      5
+call     4977
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2700
+set      $1      7
+call     4977
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+set      $0      2704
+set      $1      9
+call     4977
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+jf       $7      5605
+push     $0
+push     $1
+push     $2
+set      $0      28844
+set      $1      1531
+add      $2      4662    13634
+call     1458
+pop      $2
+pop      $1
+pop      $0
+noop
+noop
+noop
+noop
+noop
+set      $0      4
+set      $1      1
+call     6027
+eq       $1      $0      6
+jf       $1      5579
+push     $0
+push     $1
+push     $2
+set      $0      29014
+set      $1      1531
+add      $2      6788    10732
+call     1458
+pop      $2
+pop      $1
+pop      $0
+set      $0      $7
+set      $1      25866
+set      $2      32767
+push     $3
+set      $3      29241
+call     1841
+pop      $3
+push     $0
+push     $1
+push     $2
+set      $0      29245
+set      $1      1531
+add      $2      8807    12290
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2732    2498
+wmem     2733    0
+add      $1      2708    2
+wmem     $1      32767
+jmp      5714
+push     $0
+push     $1
+push     $2
+set      $0      29400
+set      $1      1531
+add      $2      4074    1160
+call     1458
+pop      $2
+pop      $1
+pop      $0
+jmp      5714
+push     $0
+push     $1
+push     $2
+set      $0      29545
+set      $1      1531
+add      $2      22387   6270
+call     1458
+pop      $2
+pop      $1
+pop      $0
+set      $0      0
+add      $2      1       27101
+rmem     $1      $2
+add      $0      $0      $1
+mult     $0      $0      31660
+call     2125
+rmem     $1      27101
+add      $1      $1      27101
+add      $2      $2      1
+gt       $1      $2      $1
+jf       $1      5636
+set      $1      25866
+set      $2      32767
+push     $3
+set      $3      29663
+call     1841
+pop      $3
+push     $0
+push     $1
+push     $2
+set      $0      29667
+set      $1      1531
+add      $2      8951    10857
+call     1458
+pop      $2
+pop      $1
+pop      $0
+wmem     2732    2488
+wmem     2733    0
+jmp      5714
+pop      $2
+pop      $1
+pop      $0
+ret
+push     $0
+push     $1
+push     $2
+push     $3
+push     $0
+push     $1
+push     $2
+set      $0      29757
+set      $1      1531
+add      $2      27776   2029
+call     1458
+pop      $2
+pop      $1
+pop      $0
+rmem     $0      3955
+rmem     $1      3956
+call     2125
+rmem     $1      3957
+call     2125
+set      $1      25919
+set      $2      4
+push     $3
+set      $3      29942
+call     1841
+pop      $3
+push     $0
+push     $1
+push     $2
+set      $0      29946
+set      $1      1531
+add      $2      9313    15
+call     1458
+pop      $2
+pop      $1
+pop      $0
+pop      $3
+pop      $2
+pop      $1
+pop      $0
+ret
+out      "- "
+call     1518
+out      "\n"
+ret
+push     $1
+push     $2
+set      $0      27381
+set      $1      5846
+set      $2      0
+call     1458
+set      $0      $2
+pop      $2
+pop      $1
+ret
+push     $3
+push     $4
+rmem     $3      2732
+add      $4      $0      2
+rmem     $4      $4
+eq       $3      $3      $4
+jf       $3      5871
+add      $2      $2      1
+pop      $4
+pop      $3
+ret
+push     $0
+push     $1
+set      $0      27381
+set      $1      5893
+call     1458
+pop      $1
+pop      $0
+ret
+push     $3
+add      $3      $0      2
+rmem     $3      $3
+eq       $3      $2      $3
+jf       $3      5918
+add      $0      $0      0
+rmem     $0      $0
+call     5814
+pop      $3
+ret
+push     $1
+push     $2
+set      $2      $0
+set      $0      27381
+set      $1      5964
+call     1543
+eq       $1      $0      32767
+jt       $1      5956
+add      $1      27381   $0
+add      $1      $1      1
+rmem     $0      $1
+jmp      5959
+set      $0      0
+pop      $2
+pop      $1
+ret
+push     $1
+set      $1      $2
+add      $0      $0      0
+rmem     $0      $0
+call     1667
+pop      $1
+jf       $0      5989
+set      $2      $1
+set      $1      32767
+ret
+push     $1
+push     $2
+add      $0      $0      2
+rmem     $0      $0
+jf       $0      6019
+rmem     $1      2732
+eq       $1      $0      $1
+jt       $1      6019
+set      $0      0
+jmp      6022
+set      $0      1
+pop      $2
+pop      $1
+ret
+jt       $0      6035
+add      $0      $1      1
+ret
+jt       $1      6048
+add      $0      $0      32767
+set      $1      $7
+call     6027
+ret
+push     $0
+add      $1      $1      32767
+call     6027
+set      $1      $0
+pop      $0
+add      $0      $0      32767
+call     6027
+ret
+in       16435
+push     21392
+rmem     21237   10070
+or       24401   14955   6512
+call     8083
+wmem     7897    16300
+call     8889
+gt       11120   21024   31428
+rmem     12193   23244
+push     21442
