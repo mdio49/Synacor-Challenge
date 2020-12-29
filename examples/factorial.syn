@@ -1,5 +1,8 @@
 # Example of a factorial function using recursion (only works modulo 32768).
 
+call @main
+halt
+
 main:
     # Ask the user for a number.
     set $0 0
@@ -28,7 +31,7 @@ done_reading:
     call @fact
     call @itoa
     out " (mod 32768)\n"
-    halt
+    ret
 
 # Computes the factorial of $0 (mod 32768) and stores it in $0.
 fact:
