@@ -24,19 +24,19 @@ Syncode is an extension of the architecture provided that allows users to write 
 As with most assembly languages, each line contains an instruction along with the arguments for that instruction, however, instead of using the number for the instruction (as described by the spec), you would use the actual name for that instruction. For example, `set 32768 10` would set the value of register 0 to 10.
 
 #### Registers
-Registers can be referred to using the syntax `$<register>` instead of the number that is used in the bytecode. So, the instruction `set $0 10` would be equivalent to the previous example, where `$0` refers to register 0, which gets converted to the number `32768` at compile time. If, instead, the argument requires a value, then using this syntax would dereference the register and extract its value. For example, `add $0 $1 5` would take the value of register 1, add 5 to it, and store it in register 0 (this would also be the case anyway if the number was used).
+Registers can be referred to using the syntax `$<register>` instead of the number that is used in the bytecode. So, the instruction `set $0 10` would be equivalent to the previous example, where `$0` refers to register 0, which gets converted to the number `32768` at compile time. If, instead, the argument requires a value, then using this syntax would dereference the register and extract its value. For example, `add $0 $1 5` would take the value of register 1, add 5 to it, and store it in register 0 (this would be the case either way even if the number was used).
 
 #### Characters
-ASCII characters can be referred to using the actual character rather than the number. For example, `out 'a'` would output the character `a` to the terminal.
+ASCII characters can be referred to using the actual character rather than the number. For example, `out 'a'` would output the character `a` to the terminal. Escaped characters may also be used (e.g. `'\n'`).
 
 #### Strings
-As an extension, you may also use full strings with the `out` instruction in order to specify multiple characters to be outputted to the terminal. This can be indicated using double quotes and would get converted to multiple individual `out` instructions at compile time. For example, `out "Hello World!"` would print the full `Hello World!` string to the terminal.
+As an extension, you may also use full strings with the `out` instruction in order to specify multiple characters to be outputted to the terminal. This can be indicated using double quotes and would get converted to multiple individual `out` instructions at compile time. For example, `out "Hello World!"` would print `Hello World!` to the terminal.
 
 #### Comments
 In-line comments may be easily specified using hash-tags (`#`) in exactly the same manner as Python; any text following it is ignored by the compiler.
 
 #### Labels
-Labels can be placed around the program which get resolved to the memory address of the next instruction during compilation. These labels can then be referenced using the `@` operator, which would dereference the label to the exact memory address that it refers to relative to the start of the program (memory address 0). This is useful for jump operations as it makes it easier to jump to a particular point in the program without needing to keep track of the program's memory address space.
+Labels can be placed around the program which get resolved to the memory address of the next instruction during compilation. These labels can then be referenced in arguments and memory using the `@` operator, which would dereference the label to the exact memory address that it refers to relative to the start of the program (memory address 0). This is useful for jump operations as it makes it easier to jump to a particular point in the program without needing to keep track of the program's memory address space.
 ```
 set $0 0
 jmp @loop
