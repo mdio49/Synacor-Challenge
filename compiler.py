@@ -22,8 +22,7 @@ INSTRUCTIONS = {
     "ret": (18, 0),
     "out": (19, 1),
     "in": (20, 1),
-    "noop": (21, 0),
-    "div": (22, 3)
+    "noop": (21, 0)
 }
 
 MEM_BUFFER = 32768
