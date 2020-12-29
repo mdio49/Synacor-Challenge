@@ -42,7 +42,7 @@ def compile(program: list):
     label_pattern = re.compile(r'(\w+)\:' + END_TOKEN)
     memory_pattern = re.compile(r'\.(\w+)' + END_TOKEN)
     register_pattern = re.compile(r'\$(\d+)' + END_TOKEN)
-    reference_pattern = re.compile(r'\@(\w+)' + END_TOKEN)
+    reference_pattern = re.compile(r'\@(\w+)([+-]\d+)?' + END_TOKEN)
     string_pattern = re.compile(r'\"((?:[^\"\\]|\\.)+)\"' + END_TOKEN)
     char_pattern = re.compile(r'\'([^\'\\]|\\.)\'' + END_TOKEN)
     number_pattern = re.compile(r'(-?\d+)' + END_TOKEN)
@@ -90,13 +90,14 @@ def compile(program: list):
                     match = register_match
                 elif reference_match and (instruction or mem_type == 'word'):
                     label = reference_match.group(1)
+                    offset = int(reference_match.group(2)) if reference_match.group(2) else 0
                     if label in labels:
-                        token = labels[label]
+                        token = labels[label] + offset
                     else:
                         if label not in pending_references:
                             pending_references[label] = []
                         pending_references[label].append(len(output) + len(args))
-                        token = 0
+                        token = offset
                     match = reference_match
                 elif string_match:
                     chars = codecs.decode(string_match.group(1), 'unicode_escape')
@@ -135,7 +136,7 @@ def compile(program: list):
                 labels[label] = len(output)
                 if label in pending_references:
                     for loc in pending_references[label]:
-                        output[loc] = labels[label]
+                        output[loc] += labels[label]
                     del pending_references[label]
                 match = label_match
             elif memory_match:
