@@ -33,11 +33,7 @@ ASCII characters can be referred to using the actual character rather than the n
 As an extension, you may also use full strings with the `out` instruction in order to specify multiple characters to be outputted to the terminal. This can be indicated using double quotes and would get converted to multiple individual `out` instructions at compile time. For example, `out "Hello World!"` would print the full `Hello World!` string to the terminal.
 
 #### Comments
-In-line comments may be easily specified using hash-tags '#' in exactly the same manner as Python; any text following it is ignored by the compiler.
-```
-# This is a comment.
-set $0 0    # This is another comment.
-```
+In-line comments may be easily specified using hash-tags (`#`) in exactly the same manner as Python; any text following it is ignored by the compiler.
 
 #### Labels
 Labels can be placed around the program which get resolved to the memory address of the next instruction at runtime. These labels can then be referenced using the `@` operator, which would dereference the label to the exact memory address that it refers to relative to the start of the program (memory address 0). This is useful for jump operations as it makes it easier to jump to a particular point in the program without needing to keep track of the program's memory address space.
