@@ -85,7 +85,7 @@ wmem @array+0 1     # Writes 1 to memory at the address of label 'array' with no
 wmem @array+1 2     # Writes 2 to memory at the address of label 'array' with an offset of 1 (i.e. the next address after 'array', or the 2nd index in the array).
 wmem @array+5 3     # Writes 3 to memory at the address of label 'array' with an offset of 5 (i.e. the next 5 addresses after 'array', or the 6th index in the array).
 ```
-This is primarily implemented in order to provide convenience when working with arrays/structs. Note however that you would still need to store the address in a register and do appropriate operations if you wish to offset it by a dynamic value. So, something like `@array+$0` would be invalid.
+This is primarily implemented in order to provide convenience when working with arrays/structs. Note however that you would still need to store the address in a register and do appropriate operations if you wish to offset it by a dynamic value. So, something like `@array+$0` would be invalid. You can also use a minus sign instead of a plus sign to indicate a negative offset, however there wouldn't be as much use for this.
 
 ## Decompiler
 There is also a decompiler written in Python which takes a binary file (or series of files) and attempts to decompile it into a more readable format, however this is experimental and often doesn't prove to be very useful.
