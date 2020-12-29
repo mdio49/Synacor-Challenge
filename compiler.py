@@ -83,7 +83,10 @@ def compile(program: list):
                     mem_matched = False
                     match = comma_match
                 elif register_match and instruction:
-                    token = int(register_match.group(1)) + REGISTER_MIN_VALUE
+                    register = int(register_match.group(1))
+                    if register >= N_REGISTERS:
+                        raise CompileError("Invalid register at line {}: {}".format(i + 1, register_match.group(0).strip()))
+                    token = register + REGISTER_MIN_VALUE
                     match = register_match
                 elif reference_match and (instruction or mem_type == 'word'):
                     label = reference_match.group(1)
@@ -109,7 +112,7 @@ def compile(program: list):
                             output.append(ord(ch))
                         mem_matched = True
                     else:
-                        raise CompileError("Invalid use of string literal at line {}: {}".format(i + 1, string_match.group(0)))
+                        raise CompileError("Invalid use of string literal at line {}: {}".format(i + 1, string_match.group(0).strip()))
                     match = string_match
                 elif char_match and (instruction or mem_type == 'word'):
                     ch = codecs.decode(char_match.group(1), 'unicode_escape')
@@ -122,7 +125,7 @@ def compile(program: list):
                     token = number if number >= 0 else number % MATH_MODULO
                     match = number_match
                 elif generic_match:
-                    raise CompileError("Invalid token at line {}: {}".format(i + 1, generic_match.group(1)))
+                    raise CompileError("Invalid token at line {}: {}".format(i + 1, generic_match.group(1).strip()))
                 else:
                     raise CompileError("Expected token at line {}".format(i + 1))
             elif label_match:
