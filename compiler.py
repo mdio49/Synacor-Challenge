@@ -1,4 +1,4 @@
-import os, sys, re
+import codecs, os, sys, re
 
 INSTRUCTIONS = {
     "halt": (0, 0),
@@ -31,13 +31,6 @@ N_REGISTERS = 8
 REGISTER_MIN_VALUE = 32768
 MATH_MODULO = 32768
 
-ESCAPE_CHARACTERS = [
-    ('n', '\n'),
-    ('r', '\r'),
-    ('t', '\t'),
-    ('0', '\0'),
-]
-
 class CompileError(Exception):
     pass
 
@@ -51,7 +44,7 @@ def compile(program: list):
     register_pattern = re.compile(r'\$(\d+)' + END_TOKEN)
     reference_pattern = re.compile(r'\@(\w+)' + END_TOKEN)
     string_pattern = re.compile(r'\"((?:[^\"\\]|\\.)+)\"' + END_TOKEN)
-    char_pattern = re.compile(r'\'([^\']|\\.)\'' + END_TOKEN)
+    char_pattern = re.compile(r'\'([^\'\\]|\\.)\'' + END_TOKEN)
     number_pattern = re.compile(r'(-?\d+)' + END_TOKEN)
     generic_pattern = re.compile('([^\s]+)' + END_TOKEN)
 
@@ -103,9 +96,7 @@ def compile(program: list):
                         token = 0
                     match = reference_match
                 elif string_match:
-                    chars = string_match.group(1)
-                    for l, c in ESCAPE_CHARACTERS:
-                        chars = chars.replace(f'\\{l}', c)
+                    chars = codecs.decode(string_match.group(1), 'unicode_escape')
                     if instruction and instruction[0] == INSTRUCTIONS['out'][0]:
                         del output[-1]
                         for ch in chars:
@@ -121,9 +112,7 @@ def compile(program: list):
                         raise CompileError("Invalid use of string literal at line {}: {}".format(i + 1, string_match.group(0)))
                     match = string_match
                 elif char_match and (instruction or mem_type == 'word'):
-                    ch = char_match.group(1)
-                    for l, c in ESCAPE_CHARACTERS:
-                        ch = ch.replace(f'\\{l}', c)
+                    ch = codecs.decode(char_match.group(1), 'unicode_escape')
                     if len(ch) > 1:
                         raise CompileError("Invalid escape character at line {}: {}".format(i + 1, ch))
                     token = ord(ch)
