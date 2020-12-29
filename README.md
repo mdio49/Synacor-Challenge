@@ -79,14 +79,13 @@ mod $0 $0 10        # Extracts the last digit.
 add $0 $0 '0'
 out $0              # Prints this value to the terminal.
 ```
-You can also specify a constant offset for the memory address by suffixing the label with a plus or minus sign (`+/-`) followed by a number. This is to provide convenience when working with arrays/structs.
+You can also specify a constant offset for the memory address by suffixing the label with a plus or minus sign (`+/-`) followed by a number.
 ```
-wmem @array+0 1     # Writes 1 to memory at the address of label 'array' with no offset.
-wmem @array+1 2     # Writes 2 to memory at the address of label 'array' with an offset of 1 (i.e. the next address after 'array').
-wmem @array+2 3     # Writes 2 to memory at the address of label 'array' with an offset of 2 (i.e. the next 2 addresses after 'array).
-# ...
+wmem @array+0 1     # Writes 1 to memory at the address of label 'array' with no offset (i.e. the first index in the array).
+wmem @array+1 2     # Writes 2 to memory at the address of label 'array' with an offset of 1 (i.e. the next address after 'array', or the 2nd index in the array).
+wmem @array+5 3     # Writes 3 to memory at the address of label 'array' with an offset of 5 (i.e. the next 5 addresses after 'array, or the 6th index in the array).
 ```
-Note however that you would still need to store the address in a register and do appropriate operations if you wish to offset it by a dynamic value. So, something like `@array+$0` would be invalid.
+This is primarily implemented in order to provide convenience when working with arrays/structs. Note however that you would still need to store the address in a register and do appropriate operations if you wish to offset it by a dynamic value. So, something like `@array+$0` would be invalid.
 
 ## Decompiler
 There is also a decompiler written in Python which takes a binary file (or series of files) and attempts to decompile it into a more readable format, however this is experimental and often doesn't prove to be very useful.
