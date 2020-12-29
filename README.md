@@ -79,11 +79,11 @@ mod $0 $0 10        # Extracts the last digit.
 add $0 $0 '0'
 out $0              # Prints this value to the terminal.
 ```
-You can also specify a constant offset for the memory address by suffixing the label with a plus or minus sign (`+/-`) followed by a number.
+You can also specify a constant offset for the memory address using the syntax `@<label>+<offset>`.
 ```
 wmem @array+0 1     # Writes 1 to memory at the address of label 'array' with no offset (i.e. the first index in the array).
 wmem @array+1 2     # Writes 2 to memory at the address of label 'array' with an offset of 1 (i.e. the next address after 'array', or the 2nd index in the array).
-wmem @array+5 3     # Writes 3 to memory at the address of label 'array' with an offset of 5 (i.e. the next 5 addresses after 'array, or the 6th index in the array).
+wmem @array+5 3     # Writes 3 to memory at the address of label 'array' with an offset of 5 (i.e. the next 5 addresses after 'array', or the 6th index in the array).
 ```
 This is primarily implemented in order to provide convenience when working with arrays/structs. Note however that you would still need to store the address in a register and do appropriate operations if you wish to offset it by a dynamic value. So, something like `@array+$0` would be invalid.
 
