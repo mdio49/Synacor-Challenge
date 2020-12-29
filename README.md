@@ -59,7 +59,7 @@ halt
 ```
 
 #### Memory
-Values can be directly stored in the program's memory using the `.` directive; this specifies the memory-type, which is then followed by the value that is stored at that location in memory. There are 3 memory types: `.word`, `.space` and `.align`.
+Values can be directly stored in the program's memory using the `.` directive; this specifies the memory-type, which is then followed by a value or series of values that all define how to affect the memory at the current location in the program. There are 3 memory types: `.word`, `.space` and `.align`.
 - `.word` defines a single literal value, or multiple values separated by commas (`,`) to be written to memory.
 - `.space` reserves a block of memory that spans the given number of memory addresses. This memory is automatically zeroed by the compiler.
 - `.align` pads the memory with zeroes such that the next memory address is a multiple of the number specified.
