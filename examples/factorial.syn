@@ -1,18 +1,34 @@
 # Example of a factorial function using recursion (only works modulo 32768).
 
-call @main
-halt
-
-N: .word 5
-
 main:
-    rmem $0 @N
+    # Ask the user for a number.
+    set $0 0
+    out "Please enter a number: "
+
+read_input:
+    in $1               # Read a character.
+    eq $2 $1 '\n'       
+    jt $2 @done_reading # Stop once we reach a new-line character.
+
+    add $1 $1 -48       # 48 is the ASCII code for '0'.
+    gt $2 $1 9
+    jt $2 @not_a_number # Halt if the character read is not a digit.
+
+    mult $0 $0 10
+    add $0 $0 $1
+    jmp @read_input
+
+not_a_number:
+    out "Not a number!\n"
+    halt
+
+done_reading:
     call @itoa
     out "! = "
     call @fact
     call @itoa
-    out '\n'
-    ret
+    out " (mod 32768)\n"
+    halt
 
 # Computes the factorial of $0 (mod 32768) and stores it in $0.
 fact:
