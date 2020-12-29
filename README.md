@@ -24,7 +24,7 @@ Syncode is an extension of the architecture provided that allows users to write 
 As with most assembly languages, each line contains an instruction along with the arguments for that instruction, however, instead of using the number for the instruction (as described by the spec), you would use the actual name for that instruction. For example, `set 32768 10` would set the value of register 0 to 10.
 
 #### Registers
-Registers can be referred to using the syntax `$<register>` instead of the number that is used in the bytecode. So, the instruction `set $0 10` would be equivalent to the previous example, where `$0` refers to register 0, which gets converted to the number `32768` at compile time. If, instead, the argument requires a value, then using this syntax would dereference the register and extract its value. For example, `add $0 $1 5` would take the value of register 1, add 5 to it, and store it in register 0.
+Registers can be referred to using the syntax `$<register>` instead of the number that is used in the bytecode. So, the instruction `set $0 10` would be equivalent to the previous example, where `$0` refers to register 0, which gets converted to the number `32768` at compile time. If, instead, the argument requires a value, then using this syntax would dereference the register and extract its value. For example, `add $0 $1 5` would take the value of register 1, add 5 to it, and store it in register 0 (this would also be the case anyway if the number was used).
 
 #### Characters
 ASCII characters can be referred to using the actual character rather than the number. For example, `out 'a'` would output the character `a` to the terminal.
