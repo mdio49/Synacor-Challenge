@@ -1,0 +1,11 @@
+call @main 
+halt
+
+# Memory goes here...
+
+# Main entry point to program.
+main:
+
+    # Code goes here...
+
+    ret
