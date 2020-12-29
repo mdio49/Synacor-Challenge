@@ -6,7 +6,7 @@ To run the virtual machine, simply compile the source files using g++ (`vm.cpp` 
 ```
 ./vm <program>
 ```
-This will run the program using the virtual machine. If the program is interrupted via a keyboard interrupt (i.e. `^C`), then the current state of the VM is dumped to the file `latest.dump`, which can be used to restore the VM back to the state it had before the program was interrupted. This can be done using the `-load` directive instead of directly inputting a program.
+This will run the program using the virtual machine. If the program is interrupted via a keyboard interrupt (i.e. `^C`), then the current state of the virtual machine is dumped to the file `latest.dump`, which can be used to restore the virtual machine back to the state it had before the program was interrupted. This can be done using the `-load` directive instead of directly inputting a program.
 ```
 ./vm -load latest.dump
 ```
@@ -27,7 +27,7 @@ As with most assembly languages, each line contains an instruction along with th
 Registers can be referred to using the syntax `$<register>` instead of the number that is used in the bytecode. So, the instruction `set $0 10` would be equivalent to the previous example, where `$0` refers to register 0, which gets converted to the number `32768` at compile time. If, instead, the argument requires a value, then using this syntax would dereference the register and extract its value. For example, `add $0 $1 5` would take the value of register 1, add 5 to it, and store it in register 0 (this would be the case either way even if the number was used).
 
 #### Characters
-ASCII characters can be referred to using the actual character rather than the number. For example, `out 'a'` would output the character `a` to the terminal. Escaped characters may also be used (e.g. `'\n'`).
+ASCII characters can be referred to using the actual character rather than the number. For example, `out 'a'` would output the character `a` to the terminal. Escaped characters may also be used (e.g. `out '\n'`).
 
 #### Strings
 As an extension, you may also use full strings with the `out` instruction in order to specify multiple characters to be outputted to the terminal. This can be indicated using double quotes and would get converted to multiple individual `out` instructions at compile time. For example, `out "Hello World!"` would print `Hello World!` to the terminal.
