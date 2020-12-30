@@ -79,7 +79,7 @@ def compile(program: list):
             if comment_match:
                 match = comment_match
             elif instruction or mem_type:
-                if mem_type == "word" and comma_match:
+                if comma_match and mem_type == "word" and mem_matched:
                     mem_matched = False
                     match = comma_match
                 elif register_match and instruction:
